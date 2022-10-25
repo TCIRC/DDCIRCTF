@@ -8,7 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <p id="flag"/>
+        <img id="icon" src="logo.png"/>
+        <p id="flag">
+        
     </div>
 
     <style>
@@ -21,15 +23,23 @@
             height: 100vh;
             width: 100vw;
             display: flex;
+            flex-flow: wrap;
             justify-content: center;
             align-items: center;
             background-color: pink;
         }
         #flag{
+            width: 100vw;
+            text-align: center;
             font-size: 250%;
             font-family: 'Courier New', Courier, monospace;
             font-weight: bolder;
             color: white;
+            margin-top: -40vh;
+        }
+        #icon{
+            height: 30%;
+            border-radius: 50%;        
         }
     </style>
     <script>
