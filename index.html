@@ -43,11 +43,21 @@
         }
     </style>
     <script>
+        String.prototype.escape = function() {
+            var tagsToReplace = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;'
+            };
+            return this.replace(/[&<>]/g, function(tag) {
+                return tagsToReplace[tag] || tag;
+            });
+        };
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const flag = urlParams.get('flag')
 
-        document.getElementById('flag').innerHTML = flag
+        document.getElementById('flag').innerHTML = flag.escape()
     </script>
 </body>
 </html>
