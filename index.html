@@ -99,9 +99,7 @@
         const flag = urlParams.get('flag')
 
         document.getElementById('flag').innerHTML = flag.escape()
-        document.addEventListener("DOMContentLoaded", () => {
-            alert(hintText)
-        })
+        
         const btnCopy = document.querySelector('.copybutton');
 
         btnCopy.addEventListener('click', function () {
