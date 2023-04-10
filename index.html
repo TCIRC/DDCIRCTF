@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="DDCIRC.png">
     <title>電研數創一家親</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <img id="icon" src="DDCIRC.png"/>
+        <img id="icon" src="DDCIRC.png" />
         <p id="q">
         <p id="ans1"></p>
         <p id="ans2"></p>
@@ -42,7 +44,7 @@
             width: 100vw;
             display: flex;
             flex-flow: column-reverse;
-            justify-content: space-around; 
+            justify-content: space-around;
             align-items: center;
             background-color: rgb(50, 237, 203);
             flex-direction: column;
@@ -87,6 +89,7 @@
             color: white;
             margin-top: -4vh;
         }
+
         #ans1 {
             width: 100vw;
             text-align: center;
@@ -96,6 +99,7 @@
             color: white;
             margin-top: -4vh;
         }
+
         #ans2 {
             width: 100vw;
             text-align: center;
@@ -105,6 +109,7 @@
             color: white;
             margin-top: -4vh;
         }
+
         #ans3 {
             width: 100vw;
             text-align: center;
@@ -114,6 +119,7 @@
             color: white;
             margin-top: -4vh;
         }
+
         #ans4 {
             width: 100vw;
             text-align: center;
@@ -123,6 +129,7 @@
             color: white;
             margin-top: -4vh;
         }
+
         #icon {
             height: 25%;
         }
@@ -169,10 +176,21 @@
         if (ans4 !== null) {
             document.getElementById('ans4').innerHTML = ans4.escape();
         }
+        String.prototype.hashCode = function () {
+            var hash = 0,
+                i, chr;
+            if (this.length === 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
 
         const ans1Button = document.getElementById('ans1Button');
         ans1Button.addEventListener('click', function () {
-            navigator.clipboard.writeText(ans1)
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans1)+"}")
                 .then(() => {
                     console.log('已複製到剪貼簿')
                 })
@@ -183,7 +201,7 @@
 
         const ans2Button = document.getElementById('ans2Button');
         ans2Button.addEventListener('click', function () {
-            navigator.clipboard.writeText(ans2)
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans2)+"}")
                 .then(() => {
                     console.log('已複製到剪貼簿')
                 })
@@ -194,7 +212,7 @@
 
         const ans3Button = document.getElementById('ans3Button');
         ans3Button.addEventListener('click', function () {
-            navigator.clipboard.writeText(ans3)
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans3)+"}")
                 .then(() => {
                     console.log('已複製到剪貼簿')
                 })
@@ -205,7 +223,7 @@
 
         const ans4Button = document.getElementById('ans4Button');
         ans4Button.addEventListener('click', function () {
-            navigator.clipboard.writeText(ans4)
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans4)+"}")
                 .then(() => {
                     console.log('已複製到剪貼簿')
                 })
