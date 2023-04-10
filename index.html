@@ -11,14 +11,26 @@
 
 <body>
     <div class="container">
-        <img id="icon" src="DDCIRC.png" />
-        <p id="flag">
+        <img id="icon" src="DDCIRC.png"/>
+        <p id="q">
+        <p id="ans1"></p>
+        <p id="ans2"></p>
+        <p id="ans3"></p>
+        <p id="ans4"></p>
         <div class="wrap">
-            <button class="copybutton">COPY</button>
+            <button id="ans1Button" class="copybutton">A</button>
+            <button id="ans2Button" class="copybutton">B</button>
+            <button id="ans3Button" class="copybutton">C</button>
+            <button id="ans4Button" class="copybutton">D</button>
+
         </div>
     </div>
 
     <style>
+        p {
+            display: block;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -29,12 +41,13 @@
             height: 100vh;
             width: 100vw;
             display: flex;
-            flex-flow: wrap;
-            justify-content: center;
+            flex-flow: column-reverse;
+            justify-content: space-around; 
             align-items: center;
             background-color: rgb(50, 237, 203);
+            flex-direction: column;
         }
-        
+
 
         .container>* {
             margin: -20px;
@@ -44,7 +57,7 @@
             background-color: #ffb6dc;
             border: none;
             color: white;
-            padding: 27px 48px;
+            padding: 10px 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -65,7 +78,7 @@
             transform: translateY(4px);
         }
 
-        #flag {
+        #q {
             width: 100vw;
             text-align: center;
             font-size: 150%;
@@ -74,7 +87,42 @@
             color: white;
             margin-top: -4vh;
         }
-
+        #ans1 {
+            width: 100vw;
+            text-align: center;
+            font-size: 150%;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            color: white;
+            margin-top: -4vh;
+        }
+        #ans2 {
+            width: 100vw;
+            text-align: center;
+            font-size: 150%;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            color: white;
+            margin-top: -4vh;
+        }
+        #ans3 {
+            width: 100vw;
+            text-align: center;
+            font-size: 150%;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            color: white;
+            margin-top: -4vh;
+        }
+        #ans4 {
+            width: 100vw;
+            text-align: center;
+            font-size: 150%;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            color: white;
+            margin-top: -4vh;
+        }
         #icon {
             height: 25%;
         }
@@ -94,22 +142,76 @@
                 return tagsToReplace[tag] || tag;
             });
         };
+
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const flag = urlParams.get('flag')
+        const ans1 = urlParams.get('ans1')
+        const ans2 = urlParams.get('ans2')
+        const ans3 = urlParams.get('ans3')
+        const ans4 = urlParams.get('ans4')
+        const q = urlParams.get('q')
 
-        document.getElementById('flag').innerHTML = flag.escape()
-        
-        const btnCopy = document.querySelector('.copybutton');
+        if (q !== null) {
+            document.getElementById('q').innerHTML = q.escape();
+        }
+        if (ans1 !== null) {
+            document.getElementById('ans1').innerHTML = ans1.escape();
+        }
 
-        btnCopy.addEventListener('click', function () {
-            const value = flag;
-            const el = document.createElement('textarea');
-            el.value = value;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
+        if (ans2 !== null) {
+            document.getElementById('ans2').innerHTML = ans2.escape();
+        }
+
+        if (ans3 !== null) {
+            document.getElementById('ans3').innerHTML = ans3.escape();
+        }
+
+        if (ans4 !== null) {
+            document.getElementById('ans4').innerHTML = ans4.escape();
+        }
+
+        const ans1Button = document.getElementById('ans1Button');
+        ans1Button.addEventListener('click', function () {
+            navigator.clipboard.writeText(ans1)
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans2Button = document.getElementById('ans2Button');
+        ans2Button.addEventListener('click', function () {
+            navigator.clipboard.writeText(ans2)
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans3Button = document.getElementById('ans3Button');
+        ans3Button.addEventListener('click', function () {
+            navigator.clipboard.writeText(ans3)
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans4Button = document.getElementById('ans4Button');
+        ans4Button.addEventListener('click', function () {
+            navigator.clipboard.writeText(ans4)
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
         });
 
     </script>
