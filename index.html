@@ -67,7 +67,7 @@
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
+            display: none;
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
@@ -168,253 +168,125 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
-        if( urlParams.has('ans1') &&  urlParams.has('ans2') && urlParams.has('ans3') && urlParams.has('ans4') && urlParams.has('ans5')){
-            
-            const q = urlParams.get('q')
-            const ans1 = urlParams.get('ans1')
-            const ans2 = urlParams.get('ans2')
-            const ans3 = urlParams.get('ans3')
-            const ans4 = urlParams.get('ans4')
-            const ans5 = urlParams.get('ans5')
-            
-
-            if (q !== null) {
-                document.getElementById('q').innerHTML = q.escape();
-            }
-            if (ans1 !== null) {
-                document.getElementById('ans1').innerHTML = ans1.escape();
-            }
-
-            if (ans2 !== null) {
-                document.getElementById('ans2').innerHTML = ans2.escape();
-            }
-
-            if (ans3 !== null) {
-                document.getElementById('ans3').innerHTML = ans3.escape();
-            }
-
-            if (ans4 !== null) {
-                document.getElementById('ans4').innerHTML = ans4.escape();
-            }
-
-            if (ans5 !== null) {
-                document.getElementById('ans5').innerHTML = ans5.escape();
-            }
-
-            String.prototype.hashCode = function () {
-                var hash = 0,
-                    i, chr;
-                if (this.length === 0) return hash;
-                for (i = 0; i < this.length; i++) {
-                    chr = this.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + chr;
-                    hash |= 0; // Convert to 32bit integer
-                }
-                return hash;
-            }
-
-            const ans1Button = document.getElementById('ans1Button');
-            ans1Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans1)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans2Button = document.getElementById('ans2Button');
-            ans2Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans2)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans3Button = document.getElementById('ans3Button');
-            ans3Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans3)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans4Button = document.getElementById('ans4Button');
-            ans4Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans4)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans5Button = document.getElementById('ans5Button');
-            ans5Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans5)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
+        if( urlParams.has('ans1')) {
+            const ans1Display = document.getElementById('ans1Button')
+            ans1Display.style.display = 'inline-block';
         }
-
-        else if( urlParams.has('ans1') && urlParams.has('ans2') && urlParams.has('ans3') && urlParams.has('ans4')){
-            
-            const ans5Display = document.getElementById('ans5Button')
-            ans5Display.style.display = 'none';
-            
-            const q = urlParams.get('q')
-            const ans1 = urlParams.get('ans1')
-            const ans2 = urlParams.get('ans2')
-            const ans3 = urlParams.get('ans3')
-            const ans4 = urlParams.get('ans4')
-
-            if (q !== null) {
-                document.getElementById('q').innerHTML = q.escape();
-            }
-            if (ans1 !== null) {
-                document.getElementById('ans1').innerHTML = ans1.escape();
-            }
-
-            if (ans2 !== null) {
-                document.getElementById('ans2').innerHTML = ans2.escape();
-            }
-
-            if (ans3 !== null) {
-                document.getElementById('ans3').innerHTML = ans3.escape();
-            }
-
-            if (ans4 !== null) {
-                document.getElementById('ans4').innerHTML = ans4.escape();
-            }
-
-            String.prototype.hashCode = function () {
-                var hash = 0,
-                    i, chr;
-                if (this.length === 0) return hash;
-                for (i = 0; i < this.length; i++) {
-                    chr = this.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + chr;
-                    hash |= 0; // Convert to 32bit integer
-                }
-                return hash;
-            }
-
-            const ans1Button = document.getElementById('ans1Button');
-            ans1Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans1)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans2Button = document.getElementById('ans2Button');
-            ans2Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans2)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans3Button = document.getElementById('ans3Button');
-            ans3Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans3)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans4Button = document.getElementById('ans4Button');
-            ans4Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans4)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
+        if( urlParams.has('ans2')) {
+            const ans2Display = document.getElementById('ans2Button')
+            ans2Display.style.display = 'inline-block';
         }
-
-        else if(urlParams.has('ans1') && urlParams.has('ans2') ) {
-            
-            const ans5Display = document.getElementById('ans5Button')
-            ans5Display.style.display = 'none';
-            const ans4Display = document.getElementById('ans4Button')
-            ans4Display.style.display = 'none';
+        if( urlParams.has('ans3')) {
             const ans3Display = document.getElementById('ans3Button')
-            ans3Display.style.display = 'none';
-            
-            const q = urlParams.get('q')
-            const ans1 = urlParams.get('ans1')
-            const ans2 = urlParams.get('ans2')
-
-            if (q !== null) {
-                document.getElementById('q').innerHTML = q.escape();
-            }
-            if (ans1 !== null) {
-                document.getElementById('ans1').innerHTML = ans1.escape();
-            }
-
-            if (ans2 !== null) {
-                document.getElementById('ans2').innerHTML = ans2.escape();
-            }
-
-            String.prototype.hashCode = function () {
-                var hash = 0,
-                    i, chr;
-                if (this.length === 0) return hash;
-                for (i = 0; i < this.length; i++) {
-                    chr = this.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + chr;
-                    hash |= 0; // Convert to 32bit integer
-                }
-                return hash;
-            }
-
-            const ans1Button = document.getElementById('ans1Button');
-            ans1Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans1)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
-            const ans2Button = document.getElementById('ans2Button');
-            ans2Button.addEventListener('click', function () {
-                navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans2)+"}")
-                    .then(() => {
-                        console.log('已複製到剪貼簿')
-                    })
-                    .catch(err => {
-                        console.error('複製失敗:', err)
-                    })
-            });
-
+            ans3Display.style.display = 'inline-block';
         }
+        if( urlParams.has('ans4')) {
+            const ans4Display = document.getElementById('ans4Button')
+            ans4Display.style.display = 'inline-block';
+        }
+        if( urlParams.has('ans5')) {
+            const ans5Display = document.getElementById('ans5Button')
+            ans5Display.style.display = 'inline-block';
+        }
+
+        const q = urlParams.get('q')
+        const ans1 = urlParams.get('ans1')
+        const ans2 = urlParams.get('ans2')
+        const ans3 = urlParams.get('ans3')
+        const ans4 = urlParams.get('ans4')
+        const ans5 = urlParams.get('ans5')
+        
+
+        if (q !== null) {
+            document.getElementById('q').innerHTML = q.escape();
+        }
+        if (ans1 !== null) {
+            document.getElementById('ans1').innerHTML = ans1.escape();
+        }
+
+        if (ans2 !== null) {
+            document.getElementById('ans2').innerHTML = ans2.escape();
+        }
+
+        if (ans3 !== null) {
+            document.getElementById('ans3').innerHTML = ans3.escape();
+        }
+
+        if (ans4 !== null) {
+            document.getElementById('ans4').innerHTML = ans4.escape();
+        }
+
+        if (ans5 !== null) {
+            document.getElementById('ans5').innerHTML = ans5.escape();
+        }
+
+        String.prototype.hashCode = function () {
+            var hash = 0,
+                i, chr;
+            if (this.length === 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
+
+        const ans1Button = document.getElementById('ans1Button');
+        ans1Button.addEventListener('click', function () {
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans1)+"}")
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans2Button = document.getElementById('ans2Button');
+        ans2Button.addEventListener('click', function () {
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans2)+"}")
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans3Button = document.getElementById('ans3Button');
+        ans3Button.addEventListener('click', function () {
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans3)+"}")
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans4Button = document.getElementById('ans4Button');
+        ans4Button.addEventListener('click', function () {
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans4)+"}")
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
+        const ans5Button = document.getElementById('ans5Button');
+        ans5Button.addEventListener('click', function () {
+            navigator.clipboard.writeText("DDCIRC{"+CryptoJS.MD5(ans5)+"}")
+                .then(() => {
+                    console.log('已複製到剪貼簿')
+                })
+                .catch(err => {
+                    console.error('複製失敗:', err)
+                })
+        });
+
     </script>
 </body>
 
